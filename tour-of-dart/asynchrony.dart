@@ -47,6 +47,44 @@ class SortedCollection {
 // Initial, broken implementation.
 int sort(Object a, Object b) => 0;
 
+typedef CompareGeneric<T> = int Function(T a, T b);
+
+class Television {
+  /// _Deprecated: Use [turnOn] instead._
+  @deprecated
+  void activate() {
+    turnOn();
+  }
+
+  // Turns the TV's power on.
+  void turnOn() {}
+}
+
+/// A domesticated South American camelid (Lama galama).
+///
+/// Andean cultures have used llamas as meat and pack
+/// animals since pre-Hispanic times.
+class Llame {
+  String name;
+
+  /// Feeds your llama [Food].
+  ///
+  /// The typical llama eats one bale of hay per week.
+  void feed(Food food) {
+    // ...
+  }
+
+  /// Exercises your llama with an [activity] for
+  /// [timeLimit] minutes.
+  void exercise(Activity activity, int timeLimit) {
+    // ...
+  }
+}
+
+class Food {}
+
+class Activity {}
+
 main() {
   var wf = WannabeFunction();
   var out = wf('Hi', 'there,', 'gang');
@@ -55,4 +93,6 @@ main() {
   SortedCollection coll = SortedCollection(sort);
   assert(coll.compare is Function);
   assert(coll.compare is Compare);
+
+  assert(sort is CompareGeneric<int>);
 }
